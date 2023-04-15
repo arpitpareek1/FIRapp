@@ -1,0 +1,7 @@
+{
+  "name": "FIR-APP",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

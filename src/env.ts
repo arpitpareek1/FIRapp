@@ -1,0 +1,1 @@
+export const  backendURL:string = 'http://localhost:5000'
