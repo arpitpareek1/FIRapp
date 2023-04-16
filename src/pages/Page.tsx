@@ -21,14 +21,17 @@ const Page: React.FC = () => {
     },[])
   function logout() {
     localStorage.setItem('islogin', 'false');
-    history.push('/login')
+    localStorage.removeItem('role');
+    localStorage.removeItem('userData');
+
+    window.location.href ='/login'
   }
 
 
   return (
     <>
       <IonPage>
-        <Header title="FIR APP" />
+        <Header title="FIR APP" hideBackButton />
         <IonContent fullscreen={true}>
           <div className="pb60 welcome-page">
             <IonGrid>
@@ -38,7 +41,7 @@ const Page: React.FC = () => {
               </IonRow>
               <IonRow className="ion-justify-content-center">
                 <IonCol sizeXs="12" size="10" sizeMd="6" >
-                  <IonCard className="tiny-padding"  onClick={()=>{isLogedIn ? history.push('/FIRform') : alert('To complain you have to login')}} >
+                  <IonCard className="tiny-padding"   onClick={()=>{isLogedIn ? window.location.href='/FIRform' : alert('To complain you have to login')}} >
                     <IonCardHeader className="slim-padding">
                       <IonItem className="blank-item" lines="none">
                         <IonIcon slot="end" icon={arrowForward} />
@@ -63,16 +66,33 @@ const Page: React.FC = () => {
                   </IonCard>
                 </IonCol>
               </IonRow>
-              <IonRow className="ion-justify-content-center">
+              { canChange ?<IonRow className="ion-justify-content-center">
                 <IonCol sizeXs="12" size="10" sizeMd="6" >
                   <IonCard
                     className="shineCard tiny-padding"
-                    onClick={()=>{canChange ? history.push('/allFIR') : alert('you can not Update Complains')}}
+                    onClick={()=>{canChange ?   window.location.href = '/allFIR' : alert('Sorry, it looks like you do not have necessary permissions to access it. This feature is restricted to admin user only.')}}
                   >
                     <IonCardHeader className="slim-padding">
                       <IonItem className="blank-item" lines="none" >
                         <IonIcon slot="end" icon={diamondOutline} />
                         <IonCardTitle>Update Complains</IonCardTitle>
+                      </IonItem>
+                    </IonCardHeader>
+                  </IonCard>
+                </IonCol>
+              </IonRow> :''}
+              <IonRow className="ion-justify-content-center">
+                <IonCol sizeXs="12" size="10" sizeMd="6" >
+                  <IonCard
+                    className="shineCard tiny-padding"
+                    // onClick={()=>{ window.location.href ='/myCompaines' }}
+                    // routerLink = '/myCompaines'
+                    onClick={()=>{isLogedIn ? window.location.href ='/myCompaines' : alert('To see your complains you have to login')}} 
+                  >
+                    <IonCardHeader className="slim-padding">
+                      <IonItem className="blank-item" lines="none" >
+                        <IonIcon slot="end" icon={diamondOutline} />
+                        <IonCardTitle>MY Complains</IonCardTitle>
                       </IonItem>
                     </IonCardHeader>
                   </IonCard>
@@ -98,7 +118,8 @@ const Page: React.FC = () => {
                 <IonCol sizeXs="12" size="10" sizeMd="6" >
                   <IonCard
                     className="shineCard tiny-padding"
-                    routerLink="/login"
+                    onClick={()=>  window.location.href = '/login'}
+                    // routerLink = '/login'
                    >
                     <IonCardHeader className="slim-padding">
                       <IonItem className="blank-item" lines="none">

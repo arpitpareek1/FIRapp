@@ -1,6 +1,6 @@
 import React from "react";
 import {IonBackButton, IonButtons, IonHeader, IonProgressBar, IonTitle, IonToolbar,} from "@ionic/react";
-
+import './allFirPage.css';
 
 interface HeaderProps {
     title?: string
@@ -20,17 +20,12 @@ const Header: React.FC<HeaderProps> = (props) => {
     }
     return (
         <>
-            <IonHeader>
+            <IonHeader mode="ios">
                 <IonToolbar>
-                    <IonTitle>{props.title}</IonTitle>
+                    <h1 className="header-text" > {props.title} </h1>
                     <IonButtons slot="start">
                         { props.hideBackButton === true ? null : <IonBackButton defaultHref="/"/>}
                     </IonButtons>
-                    {/* <IonButtons slot="end">
-                        {   !(props.hideMenuButton) &&
-                            <IonMenuButton slot="end" onClick={()=> menuController.open()}/>
-                        }
-                    </IonButtons> */}
                 </IonToolbar>
             </IonHeader>
             {progressBar()}

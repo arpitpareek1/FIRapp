@@ -2,7 +2,25 @@
 h1 {
     text-align: center;
   }
-  
+.label-box {
+  padding: 10px;
+  /* border: 1px solid #ccc; */
+  border-radius: 5px;
+  text-align: center;
+}
+  .inputfir  ion-input{
+      border: 1px solid #ccc;
+
+  }
+  .header-text{
+    
+      margin-top: 20px;
+      font-size: 26px;
+      margin-left: -41px;
+  }
+
+
+
   /* style the list of complaints */
   ion-list {
     margin: 16px;

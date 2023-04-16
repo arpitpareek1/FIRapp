@@ -26,13 +26,13 @@ import Singup from './pages/Signup';
 import FIRForm from './pages/FIRForm';
 import AllFirPage from './pages/allFirPage';
 import Header from './pages/header';
-
+import MyCompaines from './pages/myComplaines';
 setupIonicReact();
 
 const App: React.FC = () => {
   return (
-    <IonApp>
-      <IonReactRouter>
+    <IonApp  >
+      <IonReactRouter >
         <IonSplitPane contentId="main">
           <IonRouterOutlet id="main">
             <Header/>
@@ -50,6 +50,9 @@ const App: React.FC = () => {
             </Route>
             <Route path="/allFIR" exact={true}>
               <AllFirPage/>
+            </Route>
+            <Route path="/myCompaines" exact={true}>
+              <MyCompaines/>
             </Route>
           </IonRouterOutlet>
         </IonSplitPane>
