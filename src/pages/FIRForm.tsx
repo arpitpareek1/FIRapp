@@ -74,6 +74,18 @@ const FIRForm: React.FC = () => {
     "Valsad",
   ];
 
+  const incidentType = [
+    "Assault",
+    "Burglary",
+    "Domestic Violence",
+    "Fraud",
+    "Hit and Run",
+    "Robbery",
+    "Theft",
+    "Vandalism"
+  ]
+  
+
   const onSubmit = (data: FIRFormInputs) => {
     console.log(data);
     let userData = JSON.parse(localStorage.getItem("userData")!);
@@ -150,11 +162,33 @@ const FIRForm: React.FC = () => {
           </IonItem>
           <IonItem>
             <IonLabel>Location of Incident:</IonLabel> <br/>
-            <IonInput {...register("location")} required />
+            {/* <IonInput {...register("location")} required /> */}
+            <IonSelect
+              {...register("location")}
+              interface="action-sheet"
+              mode="ios"
+            >
+              {districts.map((district) => (
+                <IonSelectOption key={district} value={district}>
+                  {district}
+                </IonSelectOption>
+              ))}
+            </IonSelect>
           </IonItem>
           <IonItem>
             <IonLabel>Type of Incident:</IonLabel> <br/>
-            <IonInput {...register("incidentType")} required />
+            {/* <IonInput {...register("incidentType")} required /> */}
+            <IonSelect
+              {...register("incidentType")}
+              interface="action-sheet"
+              mode="ios"
+            >
+              {incidentType.map((incidentType) => (
+                <IonSelectOption key={incidentType} value={incidentType}>
+                  {incidentType}
+                </IonSelectOption>
+              ))}
+            </IonSelect>
           </IonItem>
           <IonItem>
             <IonLabel>Description of Incident:</IonLabel> <br/>
