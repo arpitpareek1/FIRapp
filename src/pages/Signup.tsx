@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import {
-  IonInput,
-  IonText,
-} from "@ionic/react";
+import { IonInput, IonText } from "@ionic/react";
 import "./Login.css";
 import axios from "axios";
 import { useHistory } from "react-router";
@@ -39,19 +36,11 @@ const Singup = () => {
         email: email,
         role: "user",
       };
-      console.log(data);
       axios
         .post(`${backendURL}signup`, data)
         .then((response) => {
           try {
-            console.log(
-              response.data,
-              "--------",
-              response.data.success,
-              response.data.data.role
-            );
             if (response && response.data && response.data.success) {
-              console.log("in if condition");
               localStorage.setItem("islogin", "true");
               if (
                 response &&
@@ -62,7 +51,7 @@ const Singup = () => {
               } else {
                 localStorage.setItem("role", "user");
               }
-              window.location.href ="/login";
+              window.location.href = "/login";
             } else {
               if (response && response.data && !response.data.success) {
                 alert("this email is already in use");
@@ -72,9 +61,7 @@ const Singup = () => {
             alert("You Already have acount with this email");
           }
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        .catch((error) => {});
     }
   };
 
@@ -92,12 +79,11 @@ const Singup = () => {
               name="email"
               type="email"
               value={email}
-              pattern='/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/'
+              pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/"
               onIonInput={(e) => {
                 setEmail(e.detail.value as string);
                 setEmailError(false);
               }}
-
             >
               {formSubmitted && emailError && (
                 <IonText color="danger" slot="error">
@@ -164,9 +150,14 @@ const Singup = () => {
                 </IonText>
               )}
             </IonInput>
-            <div className="loginBtn" onClick={Singup}>SIGN UP</div>
+            <div className="loginBtn" onClick={Singup}>
+              SIGN UP
+            </div>
             <p>
-              Already have an account? <span onClick={()=>    window.location.href ='/login'}>Log In</span>
+              Already have an account?{" "}
+              <span onClick={() => (window.location.href = "/login")}>
+                Log In
+              </span>
             </p>
           </div>
         </div>

@@ -33,6 +33,7 @@
   padding: 10px;
   outline: none;
 }
+
 .custom-button {
   --background: black;
   --padding-start: 10px;
@@ -52,8 +53,8 @@
   border-radius: 100px;
   cursor: pointer;
 }
-.loginionBtn 
-    ion-button {
+
+.loginionBtn ion-button {
   background: #292929;
   width: max-content;
   margin: 20px auto;
